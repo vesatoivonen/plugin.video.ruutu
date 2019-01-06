@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <string id="30002">h</string>		<!-- hours abr-->
+    <string id="30003">d</string>		<!-- days abr -->
+    <string id="30006">Added</string>
+    <string id="30007">Removed</string>
+    <string id="30008">Published</string>
+    <string id="30009">Expires</string>
+    <string id="30010">Yesterday</string>
+    <string id="30017">Add bookmark</string>
+    <string id="30019">Remove bookmark</string>
+    <string id="33078">Next page</string>
+
+	<!-- search -->	  
+    <string id="30080">Search for a video</string>
+	
+    <!-- program -->
+    <string id="30020">Programs</string>
+    <string id="30021">Search for a video</string>
+    
+    <!-- inline -->
+    <string id="30030">New programs</string>
+    <string id="30031">Most popular</string>
+    
+
+	<!-- categories -->
+    <string id="30050">Drama</string>
+    <string id="30051">Thriller</string>
+    <string id="30052">Domestic programs</string>
+    <string id="30053">Foreign programs</string>
+    <string id="30054">Entertainment and music</string>
+    <string id="30055">Talkshows</string>
+
+    <string id="30056">Reality</string>
+    <string id="30057">Lifestyle</string>
+    <string id="30058">Domestic movies</string>
+    <string id="30059">Foreign movies</string>
+    <string id="30060">Documents</string>
+    <string id="30061">News</string>
+    <string id="30062">Weather</string>
+    <string id="30063">Children</string>
+    <string id="30064">Toddlers</string>
+    <string id="30065">Preschoolers</string>
+    <string id="30066">Schoolchildren</string>
+    <string id="30067">Children's movies</string>
+</strings>
