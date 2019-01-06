@@ -4,7 +4,7 @@ import re
 import xml.etree.ElementTree as ET
 import json
 import time
-import xbmcutil as xbmcUtil
+import resources.lib.xbmcutil as xbmcUtil
 import sys
 
 reload(sys)
