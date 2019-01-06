@@ -134,6 +134,8 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
         grid = request(url, as_json=True)
         items = grid.get('items', [])
         for item in items:
+            if item.get('sticker') == 'entertainment':
+                continue
             link = "https://www.ruutu.fi{}".format(item['link']['href'])
             img = item['media']['images']['640x360']
             if 'video' in link:
