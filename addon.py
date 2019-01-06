@@ -77,7 +77,6 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
         self.addGrid("Jännitys ja draama", 533)
         self.addGrid("Lifestyle", 602)
         self.addGrid("Kansainvälinen reality ja viihde", 603)
-        self.addGrid("Cirkus - brittidraama", 6010)
 
         self.addGrid("Lasten katsotuimmat", 319)
         self.addGrid("Lasten uusimmat", 398)
@@ -120,11 +119,12 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
                 video_id = str(item['link']['target']['value'])
                 label = "{} - {}".format(item.get('footer'),
                                          item['link']['label'])
-                self.addVideoLink(label, video_id, img=img)
+                self.addVideoLink(label, video_id, img=img,
+                                  infoLabels={'plot': item['description']})
             else:
                 link = "https://www.ruutu.fi{}".format(item['link']['href'])
                 self.addViewLink(item['link']['label'], 'seasons', page, {
-                                 'link': link}, img=img)
+                                 'link': link}, img=img, infoLabels={'plot': item['description']})
         if len(items) >= self.PAGESIZE:
             self.addViewLink(self.NEXT, 'search', page + 1, args)
 
@@ -141,11 +141,11 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
             link = "https://www.ruutu.fi{}".format(item['link']['href'])
             img = item['media']['images']['640x360']
             if 'video' in link:
-                self.addVideoLink(item['link']['label'],
-                                  str(item['id']), img=img)
+                self.addVideoLink(item['link']['label'], str(item['id']), img=img,
+                                  infoLabels={'plot': item['description']})
             else:
                 self.addViewLink(item['link']['label'], 'seasons', page, {
-                                 'link': link}, img=img)
+                                 'link': link}, img=img, infoLabels={'plot': item['description']})
         if len(items) >= self.PAGESIZE:
             self.addViewLink(self.NEXT, 'grid', page + 1, args)
 
@@ -165,7 +165,8 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
                 continue
             video_id = str(episode['link']['target']['value'])
             img = episode['media']['images']['640x360']
-            self.addVideoLink(episode['title'], video_id, img=img)
+            self.addVideoLink(episode['title'], video_id, img=img,
+                              infoLabels={'plot': episode['description']})
         if len(items) >= self.PAGESIZE:
             args['link'] += '&offset={}'.format(page * self.PAGESIZE)
             self.addViewLink(self.NEXT, 'season', page + 1, args)
