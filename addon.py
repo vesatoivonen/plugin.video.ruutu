@@ -171,6 +171,8 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
             url = "https://gatling.nelonenmedia.fi/media-xml-cache?id={vid}"
             content = request(url.format(vid=videoId))
             tree = ET.fromstring(content)
+            if tree.find('.//Paid').text == '1':
+                return None
             return {'title': tree.find('.//Program').get('program_name'),
                     'link': tree.find('.//CastMediaFile').text,
                     'image': tree.find('.//Startpicture').get('href'),
@@ -180,6 +182,8 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
 
     def handleVideo(self, videoId):
         details = self.getVideoDetails(videoId)
+        if details is None:
+            return {}
         return {
             'link': details.get('link'),
             'info': {'thumbnailImage': details.get('image', ''),
