@@ -10,6 +10,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
+
 def request(url, as_json=False):
     req = urllib2.Request(url)
     req.add_header('User-Agent', 'Mozilla/5.0')
@@ -42,21 +43,30 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
         url = "https://prod-component-api.nm-services.nelonenmedia.fi/api/component/26004?limit={limit}&current_season_id={sid}"
         return url.format(limit=self.PAGESIZE, sid=seasonId)
 
+    def getClipsLink(self, seriesId):
+        url = "https://prod-component-api.nm-services.nelonenmedia.fi/api/component/26005?limit={limit}&current_series_id={sid}"
+        return url.format(limit=self.PAGESIZE, sid=seriesId)
+
     def getSeasons(self, seriesUrl):
         content = request(seriesUrl)
         ret = []
-        rgx = r"&quot;href&quot;:&quot;/grid/(\d+)&quot;,&quot;label&quot;:&quot;([^&]+?)&quot;"
-        for sid, title in re.findall(rgx, content):
+        seasons = r"&quot;href&quot;:&quot;/grid/(\d+)&quot;,&quot;label&quot;:&quot;([^&]+?)&quot;"
+        for sid, title in re.findall(seasons, content):
             if 'saattaisi kiinnostaa' in title:
                 continue
             ret.append({'link': self.getSeasonLink(sid), 'title': title})
+        sid = re.search(r"&quot;(\d+)_clips&quot;", content)
+        if sid:
+            ret.append({'link': self.getClipsLink(sid.group(1)),
+                        'title': 'Klipit'})
         return ret
 
     def addGrid(self, name, gid, page=1):
         self.addViewLink(name, 'grid', page, {'gid': gid})
 
     def handleMain(self, page, args):
-        self.addViewLink(self.lang(30021), 'search', 1, {})
+        self.addViewLink("Hae jaksoa", 'search', 1, {'mode': 'video'})
+        self.addViewLink("Hae sarjaa", 'search', 1, {'mode': 'serie'})
 
         self.addGrid("Katsotuimmat", 678)
         self.addGrid("Kotimainen viihde", 679)
@@ -82,7 +92,12 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
         self.addGrid("Lasten elokuvat", 584)
 
     def handleSearch(self, page, args):
-        url = 'https://prod-component-api.nm-services.nelonenmedia.fi/api/component/337?offset={offset}&limit={limit}&search_term={query}'
+        """
+        337 for videos
+        338 for series
+        """
+        mode = 337 if args['mode'] == 'video' else 338
+        url = 'https://prod-component-api.nm-services.nelonenmedia.fi/api/component/{mode}?offset={offset}&limit={limit}&search_term={query}'
 
         if 'query' not in args:
             keyboard = xbmc.Keyboard()
@@ -94,14 +109,20 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
 
         url = url.format(offset=(page - 1) * self.PAGESIZE,
                          limit=self.PAGESIZE,
+                         mode=mode,
                          query=args['query'])
         items = request(url, as_json=True).get('items', [])
-        for episode in items:
-            video_id = str(episode['link']['target']['value'])
-            label = "{} - {}".format(episode['footer'],
-                                     episode['link']['label'])
-            img = episode['media']['images']['640x360']
-            self.addVideoLink(label, video_id, img=img)
+        for item in items:
+            img = item['media']['images']['640x360']
+            if 'video' in item['link']['href']:
+                video_id = str(item['link']['target']['value'])
+                label = "{} - {}".format(item.get('footer'),
+                                         item['link']['label'])
+                self.addVideoLink(label, video_id, img=img)
+            else:
+                link = "https://www.ruutu.fi{}".format(item['link']['href'])
+                self.addViewLink(item['link']['label'], 'seasons', page, {
+                                 'link': link}, img=img)
         if len(items) >= self.PAGESIZE:
             self.addViewLink(self.NEXT, 'search', page + 1, args)
 
@@ -119,7 +140,7 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
                 self.addVideoLink(item['link']['label'],
                                   str(item['id']), img=img)
             else:
-                self.addViewLink(item['link']['label'], 'seasons', 1, {
+                self.addViewLink(item['link']['label'], 'seasons', page, {
                                  'link': link}, img=img)
         if len(items) >= self.PAGESIZE:
             self.addViewLink(self.NEXT, 'grid', page + 1, args)
@@ -132,11 +153,11 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
         episodes = request(args['link'], as_json=True)
         items = episodes.get('items', [])
         for episode in items:
-            ispaid = True
-            for r in episode['rights']:
+            ispaid = episode.get('rights') is not None
+            for r in episode.get('rights', []):
                 if r['type'] == 'free' and r['start'] < time.time() < r['end']:
                     ispaid = False
-            if ispaid or episode['upcoming']:
+            if ispaid or episode.get('upcoming'):
                 continue
             video_id = str(episode['link']['target']['value'])
             img = episode['media']['images']['640x360']
