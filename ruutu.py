@@ -5,7 +5,10 @@ import xml.etree.ElementTree as ET
 import json
 import time
 import xbmcutil as xbmcUtil
+import sys
 
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 def request(url, as_json=False):
     req = urllib2.Request(url)
