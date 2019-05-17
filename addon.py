@@ -6,6 +6,7 @@ import json
 import time
 import resources.lib.xbmcutil as xbmcUtil
 import sys
+import time
 
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -185,12 +186,20 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
         except Exception as e:
             return None
 
+    def getToken(self, link):
+        try:
+            url = "https://gatling.nelonenmedia.fi/auth/access/v2?stream={link}&timestamp={ts}"
+            content = request(url.format(link=link, ts=int(time.time())))
+            return content
+        except Exception as e:
+            return None
+
     def handleVideo(self, videoId):
         details = self.getVideoDetails(videoId)
         if details is None:
             return {}
         return {
-            'link': details.get('link'),
+            'link': self.getToken(details.get('link')),
             'info': {'thumbnailImage': details.get('image', ''),
                      'infoLabels': {'Title': details.get('title'),
                                     'plot': details.get('description')}
