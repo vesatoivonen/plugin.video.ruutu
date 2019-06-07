@@ -7,6 +7,7 @@ import time
 import resources.lib.xbmcutil as xbmcUtil
 import sys
 import time
+from HTMLParser import HTMLParser
 
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -41,25 +42,32 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
         self.addHandler('search', self.handleSearch)
 
     def getSeasonLink(self, seasonId):
-        url = "https://prod-component-api.nm-services.nelonenmedia.fi/api/component/26004?limit={limit}&current_season_id={sid}"
+        url = "https://prod-component-api.nm-services.nelonenmedia.fi/api/component/26004?limit={limit}&current_season_id={sid}&app=ruutu&client=kodi"
         return url.format(limit=self.PAGESIZE, sid=seasonId)
 
     def getClipsLink(self, seriesId):
-        url = "https://prod-component-api.nm-services.nelonenmedia.fi/api/component/26005?limit={limit}&current_series_id={sid}"
+        url = "https://prod-component-api.nm-services.nelonenmedia.fi/api/component/26005?limit={limit}&current_series_id={sid}&app=ruutu&client=kodi"
         return url.format(limit=self.PAGESIZE, sid=seriesId)
 
     def getSeasons(self, seriesUrl):
         content = request(seriesUrl)
         ret = []
-        seasons = r"&quot;href&quot;:&quot;/grid/(\d+)&quot;,&quot;label&quot;:&quot;([^&]+?)&quot;"
-        for sid, title in re.findall(seasons, content):
-            if 'saattaisi kiinnostaa' in title:
-                continue
-            ret.append({'link': self.getSeasonLink(sid), 'title': title})
-        sid = re.search(r"&quot;(\d+)_clips&quot;", content)
-        if sid:
-            ret.append({'link': self.getClipsLink(sid.group(1)),
-                        'title': 'Klipit'})
+        h = HTMLParser()
+        cdata = re.search(r'\[CDATA\[(.*)\]\]', content)
+        if cdata:
+            series = json.loads(cdata.group(1))
+            for page in series['pageStore']['pages']:
+                pagedata = json.loads(h.unescape(h.unescape(series['pageStore']['pages'][page]['json'])))
+                for component in pagedata['components']:
+                    if component['type'] == 'Container':
+                        continue
+                    for item in component['content']['items']:
+                        if 'clips' in str(item['id']):
+                            ret.append({'link': self.getClipsLink(item['link']['target']['value']),
+                                        'title': item['link']['label']})
+                        else:
+                            ret.append({'link': self.getSeasonLink(item['link']['target']['value']),
+                                        'title': item['link']['label']})
         return ret
 
     def addGrid(self, name, gid, page=1):
@@ -130,7 +138,7 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
             self.addViewLink(self.NEXT, 'search', page + 1, args)
 
     def listGrid(self, page, args):
-        gridurl = 'https://prod-component-api.nm-services.nelonenmedia.fi/api/component/{gid}?offset={offset}&limit={limit}'
+        gridurl = 'https://prod-component-api.nm-services.nelonenmedia.fi/api/component/{gid}?offset={offset}&limit={limit}&app=ruutu&client=kodi'
         url = gridurl.format(gid=args['gid'],
                              offset=(page - 1) * self.PAGESIZE,
                              limit=self.PAGESIZE)
@@ -174,7 +182,7 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
 
     def getVideoDetails(self, videoId):
         try:
-            url = "https://gatling.nelonenmedia.fi/media-xml-cache?id={vid}"
+            url = "https://gatling.nelonenmedia.fi/media-xml-cache?id={vid}&v=2"
             content = request(url.format(vid=videoId))
             tree = ET.fromstring(content)
             if tree.find('.//Paid').text == '1':
