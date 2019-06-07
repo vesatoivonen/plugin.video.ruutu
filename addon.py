@@ -42,11 +42,11 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
         self.addHandler('search', self.handleSearch)
 
     def getSeasonLink(self, seasonId):
-        url = "https://prod-component-api.nm-services.nelonenmedia.fi/api/component/26004?limit={limit}&current_season_id={sid}&app=ruutu&client=kodi"
+        url = "https://prod-component-api.nm-services.nelonenmedia.fi/api/component/26004?limit={limit}&current_season_id={sid}&app=ruutu&client=web"
         return url.format(limit=self.PAGESIZE, sid=seasonId)
 
     def getClipsLink(self, seriesId):
-        url = "https://prod-component-api.nm-services.nelonenmedia.fi/api/component/26005?limit={limit}&current_series_id={sid}&app=ruutu&client=kodi"
+        url = "https://prod-component-api.nm-services.nelonenmedia.fi/api/component/26005?limit={limit}&current_series_id={sid}&app=ruutu&client=web"
         return url.format(limit=self.PAGESIZE, sid=seriesId)
 
     def getSeasons(self, seriesUrl):
@@ -138,7 +138,7 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
             self.addViewLink(self.NEXT, 'search', page + 1, args)
 
     def listGrid(self, page, args):
-        gridurl = 'https://prod-component-api.nm-services.nelonenmedia.fi/api/component/{gid}?offset={offset}&limit={limit}&app=ruutu&client=kodi'
+        gridurl = 'https://prod-component-api.nm-services.nelonenmedia.fi/api/component/{gid}?offset={offset}&limit={limit}&app=ruutu&client=web'
         url = gridurl.format(gid=args['gid'],
                              offset=(page - 1) * self.PAGESIZE,
                              limit=self.PAGESIZE)
@@ -182,15 +182,15 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
 
     def getVideoDetails(self, videoId):
         try:
-            url = "https://gatling.nelonenmedia.fi/media-xml-cache?id={vid}&v=2"
+            url = "https://gatling.nelonenmedia.fi/media-xml-cache?id={vid}&v=3"
             content = request(url.format(vid=videoId))
             tree = ET.fromstring(content)
             if tree.find('.//Paid').text == '1':
                 return None
-            return {'title': tree.find('.//Program').get('program_name'),
-                    'link': tree.find('.//CastMediaFile').text,
-                    'image': tree.find('.//Startpicture').get('href'),
-                    'description': tree.find('.//Program').get('description')}
+            return {'title': tree.find('.//Metadata').find('ProgramName').text,
+                    'link': tree.find('.//StreamURLs').find('Cast').text,
+                    'image': tree.find('.//Images').find("Image[@resolution='640x360']").get('url'),
+                    'description': tree.find('.//Metadata').find('Description').text}
         except Exception as e:
             return None
 
