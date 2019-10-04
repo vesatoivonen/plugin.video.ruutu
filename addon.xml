@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.ruutu" name="Ruutu.fi" version="0.2.0" provider-name="Vesa Toivonen">
+<addon id="plugin.video.ruutu" name="Ruutu.fi" version="0.2.1" provider-name="Vesa Toivonen">
     <requires>
         <import addon="xbmc.python" version="2.2.1" />
     </requires>

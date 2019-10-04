@@ -105,7 +105,7 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
         338 for series
         """
         mode = 337 if args['mode'] == 'video' else 338
-        url = 'https://prod-component-api.nm-services.nelonenmedia.fi/api/component/{mode}?offset={offset}&limit={limit}&search_term={query}'
+        url = 'https://prod-component-api.nm-services.nelonenmedia.fi/api/component/{mode}?offset={offset}&limit={limit}&search_term={query}&app=ruutu&client=web'
 
         if 'query' not in args:
             keyboard = xbmc.Keyboard()
