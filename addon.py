@@ -163,7 +163,8 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
             self.addViewLink(season['title'], 'season', page, season)
 
     def listSeason(self, page, args):
-        episodes = request(args['link'], as_json=True)
+        pageurl = args['link'] + '&offset={}'.format((int(page) - 1) * self.PAGESIZE)
+        episodes = request(pageurl, as_json=True)
         items = episodes.get('items', [])
         for episode in items:
             ispaid = episode.get('rights') is not None
@@ -177,7 +178,6 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
             self.addVideoLink(episode['title'], video_id, img=img,
                               infoLabels={'plot': episode['description']})
         if len(items) >= self.PAGESIZE:
-            args['link'] += '&offset={}'.format(page * self.PAGESIZE)
             self.addViewLink(self.NEXT, 'season', page + 1, args)
 
     def getVideoDetails(self, videoId):
