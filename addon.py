@@ -16,6 +16,7 @@ sys.setdefaultencoding('utf8')
 def request(url, as_json=False):
     req = urllib2.Request(url)
     req.add_header('User-Agent', 'Mozilla/5.0')
+    req.add_header('content-type', 'application/json')
     try:
         response = urllib2.urlopen(req)
         content = response.read()
@@ -46,7 +47,7 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
         return url.format(limit=self.PAGESIZE, sid=seasonId)
 
     def getClipsLink(self, seriesId):
-        url = "https://prod-component-api.nm-services.nelonenmedia.fi/api/component/26005?limit={limit}&current_series_id={sid}&app=ruutu&client=web"
+        url = "https://prod-component-api.nm-services.nelonenmedia.fi/api/component/26005?limit={limit}&current_series_has_clips=true&current_series_id={sid}&app=ruutu&client=web"
         return url.format(limit=self.PAGESIZE, sid=seriesId)
 
     def getSeasons(self, seriesUrl):
@@ -62,11 +63,14 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
                     if component['type'] == 'Container':
                         continue
                     for item in component['content']['items']:
-                        if 'clips' in str(item['id']):
-                            ret.append({'link': self.getClipsLink(item['link']['target']['value']),
+                        if item['type'] != 'Grid' or 'content' not in item or 'query' not in item['content']:
+                            continue
+                        params = item['content']['query']['params']
+                        if 'current_season_id' in params:
+                            ret.append({'link': self.getSeasonLink(params['current_season_id']),
                                         'title': item['link']['label']})
-                        else:
-                            ret.append({'link': self.getSeasonLink(item['link']['target']['value']),
+                        elif 'current_series_has_clips' in params:
+                            ret.append({'link': self.getClipsLink(params['current_series_id']),
                                         'title': item['link']['label']})
         return ret
 
