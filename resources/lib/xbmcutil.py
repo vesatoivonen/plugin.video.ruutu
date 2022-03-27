@@ -5,7 +5,7 @@
 """
 
 import sys
-import urllib
+import urllib.request, urllib.parse, urllib.error
 import os
 import xbmcplugin
 import xbmcgui
@@ -39,7 +39,7 @@ class ViewAddonAbstract:
         videoHandler = handler
 
     def createContextMenuAction(self, title, action, params={}):
-        strParams = urllib.quote_plus(repr(params))
+        strParams = urllib.parse.quote_plus(repr(params))
         return (title, 'XBMC.RunPlugin(%s?action=%s&actionParams=%s)' % (sys.argv[0], action, strParams))
 
     def handle(self):
@@ -64,7 +64,7 @@ class ViewAddonAbstract:
         except:
             notification('Error', 'Could not open view: ' + view)
         if 'action' in params:
-            actParams = eval(urllib.unquote_plus(params['actionParams']))
+            actParams = eval(urllib.parse.unquote_plus(params['actionParams']))
             self.handleAction(params['action'], actParams)
 
         hdlFunc(int(page), params)
@@ -90,7 +90,7 @@ class ViewAddonAbstract:
                 liz.setInfo(type='Video', infoLabels={})
             xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, liz)
         else:
-            print("could not play " + link)
+            print(("could not play " + link))
             notification(header="Warning", message="Could not find video.")
 
     # will be overridden on inheritance
@@ -99,8 +99,8 @@ class ViewAddonAbstract:
 
     def addViewLink(self, title, view, page=1, params={}, contextMenu=[], infoLabels={}, img=''):
         u = sys.argv[0] + "?view=" + str(view)
-        for key in params.iterkeys():
-            u += "&" + key + "=" + urllib.quote_plus(str(params[key]))
+        for key in params.keys():
+            u += "&" + key + "=" + urllib.parse.quote_plus(str(params[key]))
         u += "&page=" + str(page)
         icon = "DefaultVideoPlaylists.png"
 
@@ -115,7 +115,7 @@ class ViewAddonAbstract:
             sys.argv[1]), url=u, listitem=liz, isFolder=True)
 
     def addVideoLink(self, title, link, img, infoLabels={}, contextMenu=[], videoStreamInfo={}):
-        u = sys.argv[0] + "?view=video&link=" + urllib.quote_plus(link)
+        u = sys.argv[0] + "?view=video&link=" + urllib.parse.quote_plus(link)
         #+ "&name=" + urllib.quote_plus(title)
         icon = "DefaultVideo.png"
         liz = xbmcgui.ListItem(title, iconImage=icon, thumbnailImage=img)
@@ -157,7 +157,7 @@ def endOfDir():
 
 def addDirLink(name, page, link, autoplay, isPlayable=True):
     u = sys.argv[0] + "?page=" + \
-        str(page) + "&link=" + urllib.quote_plus(link) + "&name=" + name
+        str(page) + "&link=" + urllib.parse.quote_plus(link) + "&name=" + name
     icon = "DefaultVideoPlaylists.png"
     if autoplay:
         icon = "DefaultVideo.png"
@@ -174,9 +174,9 @@ def addLink(name, url, iconimage):
     liz = xbmcgui.ListItem(
         name, iconImage="DefaultVideo.png", thumbnailImage=iconimage)
     liz.setInfo(type="Video", infoLabels={"Title": name})
-    print(sys.argv[1])
+    print((sys.argv[1]))
 
-    print(sys.argv)
+    print((sys.argv))
     ok = xbmcplugin.addDirectoryItem(
         handle=int(sys.argv[1]), url=url, listitem=liz)
     return ok
@@ -197,7 +197,7 @@ def getParams():
             splitparams = {}
             splitparams = pairsofparams[i].split('=')
             if (len(splitparams)) == 2:
-                param[splitparams[0]] = urllib.unquote_plus(splitparams[1])
+                param[splitparams[0]] = urllib.parse.unquote_plus(splitparams[1])
     return param
 
 

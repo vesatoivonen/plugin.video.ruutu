@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 import re
 import xml.etree.ElementTree as ET
 import json
@@ -7,24 +7,25 @@ import time
 import resources.lib.xbmcutil as xbmcUtil
 import sys
 import time
-from HTMLParser import HTMLParser
+from html.parser import HTMLParser
+import importlib
 
-reload(sys)
+importlib.reload(sys)
 sys.setdefaultencoding('utf8')
 
 
 def request(url, as_json=False):
-    req = urllib2.Request(url)
+    req = urllib.request.Request(url)
     req.add_header('User-Agent', 'Mozilla/5.0')
     req.add_header('content-type', 'application/json')
     try:
-        response = urllib2.urlopen(req)
+        response = urllib.request.urlopen(req)
         content = response.read()
         response.close()
         if as_json:
             return json.loads(content)
         return content
-    except urllib2.HTTPError:
+    except urllib.error.HTTPError:
         return []
 
 
