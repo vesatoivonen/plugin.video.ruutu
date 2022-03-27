@@ -54,7 +54,7 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
         content = request(seriesUrl)
         ret = []
         h = HTMLParser()
-        cdata = re.search(r'\[CDATA\[(.*)\]\]', content.decode('utf-8')
+        cdata = re.search(r'\[CDATA\[(.*)\]\]', content.decode('utf-8'))
         if cdata:
             series = json.loads(cdata.group(1))
             for page in series['pageStore']['pages']:
