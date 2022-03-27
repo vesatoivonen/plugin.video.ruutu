@@ -11,7 +11,6 @@ from html.parser import HTMLParser
 import importlib
 
 importlib.reload(sys)
-sys.setdefaultencoding('utf8')
 
 
 def request(url, as_json=False):
