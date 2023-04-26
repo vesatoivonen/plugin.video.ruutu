@@ -7,7 +7,7 @@ import time
 import resources.lib.xbmcutil as xbmcUtil
 import sys
 import time
-from html.parser import HTMLParser
+import html
 import importlib
 
 importlib.reload(sys)
@@ -53,13 +53,12 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
     def getSeasons(self, seriesUrl):
         content = request(seriesUrl)
         ret = []
-        h = HTMLParser()
         cdata = re.search(r"\[CDATA\[(.*)\]\]", content.decode("utf-8"))
         if cdata:
             series = json.loads(cdata.group(1))
             for page in series["pageStore"]["pages"]:
                 pagedata = json.loads(
-                    h.unescape(h.unescape(series["pageStore"]["pages"][page]["json"]))
+                    html.unescape(html.unescape(series["pageStore"]["pages"][page]["json"]))
                 )
                 for component in pagedata["components"]:
                     if component["type"] == "Container":
