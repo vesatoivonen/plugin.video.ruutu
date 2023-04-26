@@ -14,6 +14,9 @@ provider-name="Vesa Toivonen, FunctionalHacker">
         Liv, Jim</description>
         <platform>all</platform>
         <nofanart>false</nofanart>
+        <assets>
+            <icon>resources/icon.jpg</icon>
+        </assets>
     </extension>
     <news>v0.1.0 (2019-01-06) - Initial version</news>
 </addon>
