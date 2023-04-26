@@ -15,7 +15,7 @@ provider-name="Vesa Toivonen, FunctionalHacker">
         <platform>all</platform>
         <nofanart>false</nofanart>
         <assets>
-            <icon>resources/icon.jpg</icon>
+            <icon>resources/icon.png</icon>
         </assets>
     </extension>
     <news>v0.1.0 (2019-01-06) - Initial version</news>
