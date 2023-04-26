@@ -86,9 +86,8 @@ class ViewAddonAbstract:
             info = details.get("info")
             if info:
                 # build the listitem with additional info
-                liz = xbmcgui.ListItem(
-                    path=videoUrl, thumbnailImage=info.get("thumbnailImage")
-                )
+                liz = xbmcgui.ListItem(path=videoUrl)
+                liz.setArt({"thumb": info.get("thumbnailImage")})
                 liz.setInfo(type="Video", infoLabels=info.get("infoLabels"))
             else:
                 liz = xbmcgui.ListItem(path=videoUrl)
@@ -131,7 +130,8 @@ class ViewAddonAbstract:
         u = sys.argv[0] + "?view=video&link=" + urllib.parse.quote_plus(link)
         # + "&name=" + urllib.quote_plus(title)
         icon = "DefaultVideo.png"
-        liz = xbmcgui.ListItem(title, iconImage=icon, thumbnailImage=img)
+        liz = xbmcgui.ListItem(title)
+        liz.setArt({"icon": icon, "thumb": img})
         liz.setProperty("IsPlayable", "true")
         infoLabels["Title"] = title
         liz.setInfo(type="Video", infoLabels=infoLabels)

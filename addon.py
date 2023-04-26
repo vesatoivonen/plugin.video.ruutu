@@ -58,7 +58,9 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
             series = json.loads(cdata.group(1))
             for page in series["pageStore"]["pages"]:
                 pagedata = json.loads(
-                    html.unescape(html.unescape(series["pageStore"]["pages"][page]["json"]))
+                    html.unescape(
+                        html.unescape(series["pageStore"]["pages"][page]["json"])
+                    )
                 )
                 for component in pagedata["components"]:
                     if component["type"] == "Container":
@@ -77,7 +79,7 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
                                     "link": self.getSeasonLink(
                                         params["current_season_id"]
                                     ),
-                                    "title": item["link"]["label"],
+                                    "title": item["label"]["text"],
                                 }
                             )
                         elif "current_series_has_clips" in params:
@@ -86,7 +88,7 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
                                     "link": self.getClipsLink(
                                         params["current_series_id"]
                                     ),
-                                    "title": item["link"]["label"],
+                                    "title": item["label"]["text"],
                                 }
                             )
         return ret
