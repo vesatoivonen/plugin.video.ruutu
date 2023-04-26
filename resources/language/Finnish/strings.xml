@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <strings>
-    <string id="30002">h</string>			<!-- hours abr-->
-    <string id="30003">pv</string>			<!-- days abr -->
+    <string id="30002">h</string>
+    <!-- hours abr-->
+    <string id="30003">pv</string>
+    <!-- days abr -->
     <string id="30006">Lisätty</string>
     <string id="30007">Poistettu</string>
     <string id="30008">Julkaistu</string>
@@ -10,29 +12,21 @@
     <string id="30017">Lisää kirjanmerkki</string>
     <string id="30019">Poista kirjanmerkki</string>
     <string id="33078">Seuraava sivu</string>
-
-	<!-- search -->	  
+    <!-- search -->
     <string id="30080">Etsi videota</string>
-
-
     <!-- program -->
     <string id="30020">Ohjelmat</string>
     <string id="30021">Haku</string>
-    
-    
     <!-- inline -->
     <string id="30030">Uusimmat ohjelmat</string>
     <string id="30031">Suosituimmat ohjelmat</string>
-    
-
-	<!-- categories -->
+    <!-- categories -->
     <string id="30050">Draama</string>
     <string id="30051">Jännitys</string>
     <string id="30052">Kotimaiset ohjelmat</string>
     <string id="30053">Ulkomaiset ohjelmat</string>
     <string id="30054">Viihde ja musiikki</string>
     <string id="30055">Keskustelu</string>
-
     <string id="30056">Reality</string>
     <string id="30057">Lifestyle</string>
     <string id="30058">Kotimaiset elokuvat</string>
@@ -46,4 +40,3 @@
     <string id="30066">Koululaiset</string>
     <string id="30067">Children's movies</string>
 </strings>
-

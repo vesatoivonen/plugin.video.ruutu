@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.ruutu" name="Ruutu.fi" version="0.2.2" provider-name="Vesa Toivonen">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<addon id="plugin.video.ruutu" name="Ruutu.fi" version="0.2.2"
+provider-name="Vesa Toivonen">
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
     </requires>
@@ -9,10 +10,10 @@
     <extension point="xbmc.addon.metadata">
         <summary>Ruutu.fi</summary>
         <language>fi en</language>
-        <description>Finnish tv programs from channels: Nelonen, Liv, Jim</description>
+        <description>Finnish tv programs from channels: Nelonen,
+        Liv, Jim</description>
         <platform>all</platform>
         <nofanart>false</nofanart>
     </extension>
-    <news>v0.1.0 (2019-01-06)
-- Initial version</news>
+    <news>v0.1.0 (2019-01-06) - Initial version</news>
 </addon>
