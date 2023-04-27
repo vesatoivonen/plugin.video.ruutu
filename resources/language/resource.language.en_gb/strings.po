@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: plugin.video.ruutu\n"
 "Report-Msgid-Bugs-To: https://github.com/vesatoivonen/plugin.video.ruutu\n"
 "POT-Creation-Date: 2023-04-27 15:22+0000\n"
-"PO-Revision-Date: 2023-04-27 15:22+0000\n"
+"PO-Revision-Date: 2023-04-27 16:15+0000\n"
 "Last-Translator: Marko Korhonen <functionalhacker@korhonen.cc>\n"
 "Language-Team: English\n"
 "MIME-Version: 1.0\n"
@@ -13,153 +13,90 @@ msgstr ""
 "Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#hours abr
 msgctxt "#30002"
-msgid "h"
-msgstr ""
+msgid "Most watched"
+msgstr "Search for an episode"
 
-#days abr
 msgctxt "#30003"
-msgid "d"
+msgid "Most watched"
+msgstr "Search for a series"
+
+msgctxt "#30004"
+msgid "Most watched"
 msgstr ""
 
-#empty strings from id 30004 to 30005
+msgctxt "#30005"
+msgid "Domestic entertainment"
+msgstr ""
 
 msgctxt "#30006"
-msgid "Added"
+msgid "Domestic reality"
 msgstr ""
 
 msgctxt "#30007"
-msgid "Removed"
+msgid "Movies"
 msgstr ""
 
 msgctxt "#30008"
-msgid "Published"
+msgid "Ruutu originals"
 msgstr ""
 
 msgctxt "#30009"
-msgid "Expires"
-msgstr ""
-
-msgctxt "#30010"
-msgid "Yesterday"
-msgstr ""
-
-#empty strings from id 30011 to 30016
-
-msgctxt "#30017"
-msgid "Add bookmark"
-msgstr ""
-
-#empty string with id 30018
-
-msgctxt "#30019"
-msgid "Remove bookmark"
-msgstr ""
-
-msgctxt "#30020"
-msgid "Programs"
-msgstr ""
-
-msgctxt "#30021"
-msgid "Search for a video"
-msgstr ""
-
-#inline
-#empty strings from id 30022 to 30029
-
-msgctxt "#30030"
-msgid "New programs"
-msgstr ""
-
-msgctxt "#30031"
-msgid "Most popular"
-msgstr ""
-
-#categories
-#empty strings from id 30032 to 30049
-
-msgctxt "#30050"
-msgid "Drama"
-msgstr ""
-
-msgctxt "#30051"
-msgid "Thriller"
-msgstr ""
-
-msgctxt "#30052"
-msgid "Domestic programs"
-msgstr ""
-
-msgctxt "#30053"
-msgid "Foreign programs"
-msgstr ""
-
-msgctxt "#30054"
-msgid "Entertainment and music"
-msgstr ""
-
-msgctxt "#30055"
-msgid "Talkshows"
-msgstr ""
-
-msgctxt "#30056"
-msgid "Reality"
-msgstr ""
-
-msgctxt "#30057"
-msgid "Lifestyle"
-msgstr ""
-
-msgctxt "#30058"
-msgid "Domestic movies"
-msgstr ""
-
-msgctxt "#30059"
-msgid "Foreign movies"
-msgstr ""
-
-msgctxt "#30060"
 msgid "Documents"
 msgstr ""
 
-msgctxt "#30061"
-msgid "News"
+msgctxt "#30010"
+msgid "Thriller and drama"
 msgstr ""
 
-msgctxt "#30062"
-msgid "Weather"
+msgctxt "#30011"
+msgid "Lifestyle"
 msgstr ""
 
-msgctxt "#30063"
-msgid "Children"
+msgctxt "#30012"
+msgid "International reality ja entertainment"
 msgstr ""
 
-msgctxt "#30064"
-msgid "Toddlers"
+msgctxt "#30013"
+msgid "Children's most watched"
 msgstr ""
 
-msgctxt "#30065"
-msgid "Preschoolers"
+msgctxt "#30014"
+msgid "Children's newest"
 msgstr ""
 
-msgctxt "#30066"
-msgid "Schoolchildren"
+msgctxt "#30015"
+msgid "Kid's Ruutu recommends"
 msgstr ""
 
-msgctxt "#30067"
-msgid "Children's movies"
+msgctxt "#30016"
+msgid "Legos"
 msgstr ""
 
-#empty strings from id 30068 to 30079
-
-msgctxt "#30080"
-msgid "Search for a video"
+msgctxt "#30017"
+msgid "Fun"
 msgstr ""
 
-#program
-#empty strings from id 30081 to 33077
+msgctxt "#30018"
+msgid "Adventure"
+msgstr ""
 
-msgctxt "#33078"
-msgid "Next page"
+msgctxt "#30019"
+msgid "Girl power"
+msgstr ""
+
+msgctxt "#30020"
+msgid "Heroes"
+msgstr ""
+
+msgctxt "#30021"
+msgid "Animal friends"
+msgstr ""
+
+msgctxt "#30022"
+msgid "For kids"
+msgstr ""
+
+msgctxt "#30023"
+msgid "Kid's movies"
 msgstr ""

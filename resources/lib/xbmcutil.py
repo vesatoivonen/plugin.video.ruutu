@@ -236,3 +236,8 @@ def notification(header="", message="", sleep=5000):
     in addition you can set the length of time it displays in milliseconds and a icon image.
     """
     xbmc.executebuiltin("XBMC.Notification(%s,%s,%i)" % (header, message, sleep))
+
+
+def get_translation(string_id):
+    src = xbmc if string_id < 30000 else xbmcaddon.Addon()
+    return src.getLocalizedString(string_id)
