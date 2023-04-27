@@ -98,33 +98,33 @@ class RuutuAddon(xbmcUtil.ViewAddonAbstract):
 
     def handleMain(self, page, args):
         self.addViewLink(
-            xbmcUtil.get_translation("#30002"), "search", 1, {"mode": "video"}
+            xbmcUtil.get_translation(30002), "search", 1, {"mode": "video"}
         )
         self.addViewLink(
-            xbmcUtil.get_translation("#30003"), "search", 1, {"mode": "serie"}
+            xbmcUtil.get_translation(30003), "search", 1, {"mode": "serie"}
         )
 
-        self.addGrid(xbmcUtil.get_translation("#30004"), 678)
-        self.addGrid(xbmcUtil.get_translation("#30005"), 679)
-        self.addGrid(xbmcUtil.get_translation("#30006"), 733)
-        self.addGrid(xbmcUtil.get_translation("#30006"), 238)
-        self.addGrid(xbmcUtil.get_translation("#30008"), 5333)
-        self.addGrid(xbmcUtil.get_translation("#30009"), 732)
-        self.addGrid(xbmcUtil.get_translation("#30010"), 533)
-        self.addGrid(xbmcUtil.get_translation("#30011"), 602)
-        self.addGrid(xbmcUtil.get_translation("#30012"), 603)
+        self.addGrid(xbmcUtil.get_translation(30004), 678)
+        self.addGrid(xbmcUtil.get_translation(30005), 679)
+        self.addGrid(xbmcUtil.get_translation(30006), 733)
+        self.addGrid(xbmcUtil.get_translation(30006), 238)
+        self.addGrid(xbmcUtil.get_translation(30008), 5333)
+        self.addGrid(xbmcUtil.get_translation(30009), 732)
+        self.addGrid(xbmcUtil.get_translation(30010), 533)
+        self.addGrid(xbmcUtil.get_translation(30011), 602)
+        self.addGrid(xbmcUtil.get_translation(30012), 603)
 
-        self.addGrid(xbmcUtil.get_translation("#30012"), 319)
-        self.addGrid(xbmcUtil.get_translation("#30013"), 398)
-        self.addGrid(xbmcUtil.get_translation("#30014"), 320)
-        self.addGrid(xbmcUtil.get_translation("#30015"), 391)
-        self.addGrid(xbmcUtil.get_translation("#30016"), 392)
-        self.addGrid(xbmcUtil.get_translation("#30017"), 393)
-        self.addGrid(xbmcUtil.get_translation("#30018"), 394)
-        self.addGrid(xbmcUtil.get_translation("#30018"), 395)
-        self.addGrid(xbmcUtil.get_translation("#30019"), 396)
-        self.addGrid(xbmcUtil.get_translation("#30020"), 397)
-        self.addGrid(xbmcUtil.get_translation("#30020"), 584)
+        self.addGrid(xbmcUtil.get_translation(30012), 319)
+        self.addGrid(xbmcUtil.get_translation(30013), 398)
+        self.addGrid(xbmcUtil.get_translation(30014), 320)
+        self.addGrid(xbmcUtil.get_translation(30015), 391)
+        self.addGrid(xbmcUtil.get_translation(30016), 392)
+        self.addGrid(xbmcUtil.get_translation(30017), 393)
+        self.addGrid(xbmcUtil.get_translation(30018), 394)
+        self.addGrid(xbmcUtil.get_translation(30018), 395)
+        self.addGrid(xbmcUtil.get_translation(30019), 396)
+        self.addGrid(xbmcUtil.get_translation(30020), 397)
+        self.addGrid(xbmcUtil.get_translation(30020), 584)
 
     def handleSearch(self, page, args):
         """
