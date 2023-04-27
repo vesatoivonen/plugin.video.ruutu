@@ -1,0 +1,146 @@
+# XBMC Media Center language file
+msgid ""
+msgstr ""
+"Project-Id-Version: plugin.video.ruutu\n"
+"Report-Msgid-Bugs-To: https://github.com/vesatoivonen/plugin.video.ruutu\n"
+"POT-Creation-Date: 2023-04-27 15:22+0000\n"
+"PO-Revision-Date: 2023-04-27 15:22+0000\n"
+"Last-Translator: Marko Korhonen <functionalhacker@korhonen.cc>\n"
+"Language-Team: Finnish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fi\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+msgctxt "#30002"
+msgid "h"
+msgstr "h"
+
+msgctxt "#30003"
+msgid "d"
+msgstr "pv"
+
+msgctxt "#30006"
+msgid "Added"
+msgstr "Lisätty"
+
+msgctxt "#30007"
+msgid "Removed"
+msgstr "Poistettu"
+
+msgctxt "#30008"
+msgid "Published"
+msgstr "Julkaistu"
+
+msgctxt "#30009"
+msgid "Expires"
+msgstr "Erääntyy"
+
+msgctxt "#30010"
+msgid "Yesterday"
+msgstr "Eilen"
+
+msgctxt "#30017"
+msgid "Add bookmark"
+msgstr "Lisää kirjanmerkki"
+
+msgctxt "#30019"
+msgid "Remove bookmark"
+msgstr "Poista kirjanmerkki"
+
+msgctxt "#30020"
+msgid "Programs"
+msgstr "Ohjelmat"
+
+msgctxt "#30021"
+msgid "Search for a video"
+msgstr "Haku"
+
+msgctxt "#30030"
+msgid "New programs"
+msgstr "Uusimmat ohjelmat"
+
+msgctxt "#30031"
+msgid "Most popular"
+msgstr "Suosituimmat ohjelmat"
+
+msgctxt "#30050"
+msgid "Drama"
+msgstr "Draama"
+
+msgctxt "#30051"
+msgid "Thriller"
+msgstr "Jännitys"
+
+msgctxt "#30052"
+msgid "Domestic programs"
+msgstr "Kotimaiset ohjelmat"
+
+msgctxt "#30053"
+msgid "Foreign programs"
+msgstr "Ulkomaiset ohjelmat"
+
+msgctxt "#30054"
+msgid "Entertainment and music"
+msgstr "Viihde ja musiikki"
+
+msgctxt "#30055"
+msgid "Talkshows"
+msgstr "Keskustelu"
+
+msgctxt "#30056"
+msgid "Reality"
+msgstr "Reality"
+
+msgctxt "#30057"
+msgid "Lifestyle"
+msgstr "Lifestyle"
+
+msgctxt "#30058"
+msgid "Domestic movies"
+msgstr "Kotimaiset elokuvat"
+
+msgctxt "#30059"
+msgid "Foreign movies"
+msgstr "Ulkomaiset elokuvat"
+
+msgctxt "#30060"
+msgid "Documents"
+msgstr "Dokumentit"
+
+msgctxt "#30061"
+msgid "News"
+msgstr "Uutiset"
+
+msgctxt "#30062"
+msgid "Weather"
+msgstr "Sää"
+
+msgctxt "#30063"
+msgid "Children"
+msgstr "Lapset"
+
+msgctxt "#30064"
+msgid "Toddlers"
+msgstr "Taaperot"
+
+msgctxt "#30065"
+msgid "Preschoolers"
+msgstr "Leikki-ikäiset"
+
+msgctxt "#30066"
+msgid "Schoolchildren"
+msgstr "Koululaiset"
+
+msgctxt "#30067"
+msgid "Children's movies"
+msgstr "Children's movies"
+
+msgctxt "#30080"
+msgid "Search for a video"
+msgstr "Etsi videota"
+
+msgctxt "#33078"
+msgid "Next page"
+msgstr "Seuraava sivu"
