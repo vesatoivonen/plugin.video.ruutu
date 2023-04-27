@@ -110,10 +110,8 @@ class ViewAddonAbstract:
         u += "&page=" + str(page)
         icon = "DefaultVideoPlaylists.png"
 
-        addon = xbmcaddon.Addon(id=self.ADDON_ID)
-
         liz = xbmcgui.ListItem(title)
-        liz.setArt({"icon": addon.getAddonInfo("path") + "icon"})
+        liz.setArt({"icon": icon, "thumb": img})
         liz.setProperty("IsPlayable", "false")
         infoLabels["Title"] = title
         liz.setInfo(type="Video", infoLabels=infoLabels)
