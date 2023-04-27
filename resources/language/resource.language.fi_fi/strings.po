@@ -14,11 +14,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 msgctxt "#30002"
-msgid "Most watched"
+msgid "Search for an episode"
 msgstr "Hae jaksoa"
 
 msgctxt "#30003"
-msgid "Most watched"
+msgid "Search for a series"
 msgstr "Hae sarjaa"
 
 msgctxt "#30004"
