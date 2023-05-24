@@ -1,0 +1,102 @@
+# XBMC Media Center language file
+msgid ""
+msgstr ""
+"Project-Id-Version: plugin.video.ruutu\n"
+"Report-Msgid-Bugs-To: https://github.com/vesatoivonen/plugin.video.ruutu\n"
+"POT-Creation-Date: 2023-04-27 15:22+0000\n"
+"PO-Revision-Date: 2023-04-27 16:15+0000\n"
+"Last-Translator: Marko Korhonen <functionalhacker@korhonen.cc>\n"
+"Language-Team: Finnish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fi\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+msgctxt "#30002"
+msgid "Search for an episode"
+msgstr "Hae jaksoa"
+
+msgctxt "#30003"
+msgid "Search for a series"
+msgstr "Hae sarjaa"
+
+msgctxt "#30004"
+msgid "Most watched"
+msgstr "Katsotuimmat"
+
+msgctxt "#30005"
+msgid "Domestic entertainment"
+msgstr "Kotimainen viihde"
+
+msgctxt "#30006"
+msgid "Domestic reality"
+msgstr "Kotimainen reality"
+
+msgctxt "#30007"
+msgid "Movies"
+msgstr "Elokuvat"
+
+msgctxt "#30008"
+msgid "Ruutu originals"
+msgstr "Ruutu alkuperäissarjat"
+
+msgctxt "#30009"
+msgid "Documents"
+msgstr "Dokumentit"
+
+msgctxt "#30010"
+msgid "Thriller and drama"
+msgstr "Jännitys ja draama"
+
+msgctxt "#30011"
+msgid "Lifestyle"
+msgstr "Lifestyle"
+
+msgctxt "#30012"
+msgid "International reality ja entertainment"
+msgstr "Kansainvälinen reality ja viihde"
+
+msgctxt "#30013"
+msgid "Children's most watched"
+msgstr "Lasten katsotuimmat"
+
+msgctxt "#30014"
+msgid "Children's newest"
+msgstr "Lasten uusimmat"
+
+msgctxt "#30015"
+msgid "Kid's Ruutu recommends"
+msgstr "Lasten Ruutu suosittelee"
+
+msgctxt "#30016"
+msgid "Legos"
+msgstr "Legot"
+
+msgctxt "#30017"
+msgid "Fun"
+msgstr "Hulvatonta hauskanpitoa"
+
+msgctxt "#30018"
+msgid "Adventure"
+msgstr "Seikkailuja"
+
+msgctxt "#30019"
+msgid "Girl power"
+msgstr "Tyttöenergiaa"
+
+msgctxt "#30020"
+msgid "Heroes"
+msgstr "Sankarit"
+
+msgctxt "#30021"
+msgid "Animal friends"
+msgstr "Eläinystäviä"
+
+msgctxt "#30022"
+msgid "For kids"
+msgstr "Perheen pienimmille"
+
+msgctxt "#30023"
+msgid "Kid's movies"
+msgstr "Lasten elokuvat"
